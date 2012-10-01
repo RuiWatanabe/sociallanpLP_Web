@@ -31,7 +31,7 @@ else{
   if($user && $login != false){
   		try{
   		 	$return = "true";
-  		 	//$return =  $facebook->api('/me/feed', 'POST', array('message' => "SocialLanpをシェアしました。" , 'link' => "http://sociallanp.lastlanp.jp"));
+  		 	//$return =  $facebook->api('/me/feed', 'POST', array('message' => "この無料ツール、かなり凄いです！何がすごいって、こんな感じでfacebookで口コミがどんどん広がるんです！【ブログを拡散したい】とか【お店にお客さんをたくさん呼びたい】とか【商品をもっと認知させたい】とか【リスト命！】という方は、このツールを使えば一瞬です。一気にお客さんが集まります。これからのマーケティングに新しい風を巻き起こしそうな予感です。ツールの設置自体も簡単なのでとりあえずダウンロードしておくことをお勧めします！無料配布期間は今だけみたいなのでお早めに♪" , 'link' => "http://sociallanp.lastlanp.jp"));
   		 	//echo $req;
 	 	}
   		 catch(Exception $e){

@@ -1,9 +1,43 @@
 
+
+function smartRollover() {
+	if(document.getElementsByTagName) {
+		var images = document.getElementsByTagName("img");
+
+		for(var i=0; i < images.length; i++) {
+			if(images[i].getAttribute("src").match("_off."))
+			{
+				images[i].onmouseover = function() {
+					this.setAttribute("src", this.getAttribute("src").replace("_off.", "_on."));
+				}
+				images[i].onmouseout = function() {
+					this.setAttribute("src", this.getAttribute("src").replace("_on.", "_off."));
+				}
+			}
+		}
+	}
+}
+
+if(window.addEventListener) {
+	window.addEventListener("load", smartRollover, false);
+}
+else if(window.attachEvent) {
+	window.attachEvent("onload", smartRollover);
+}
+
+
+
 var dir = "plugin";
 
 $(document).ready(function(){
 
-	$(".connectFacebook").after('<div class="loadIcon" style="display:none;"><img src="plugin/loadIcon.gif" /></div><div class="addContent"></div>');
+	//$(".connectFacebook").after('<div class="loadIcon" style="display:none;"><img src="plugin/loadIcon.gif" /></div><div class="addContent"></div>');
+	
+		$(".connectFacebook").after(
+		'<div class="addContent"></div>'
+		);
+
+
 	checkLoginState();
     
 });
@@ -64,6 +98,7 @@ function debug(){
 	
 }
 
+/*
 function callback(name){
 	//console.log(name);
 	if(name != "error"){
@@ -71,12 +106,21 @@ function callback(name){
 		checkLoginState();
 	}
 }
+*/
+function callback(message){
+	console.log(message);
+	if(message.indexOf("true") != -1){
+		$("div.loadIcon").slideDown();
+		open(message);
+	}
+}
+
 
 
 
 //記事を開く
 function open(name){
-	$("div.loadIcon").slideDown();
+	$("img.loading").slideDown();
 	$(".connectFacebook").fadeOut();
 
 			$.ajax({
@@ -91,14 +135,15 @@ function open(name){
 	
 						//share();
 						//debug();
-						$("div.loadIcon,.ready").slideUp();
+						$("img.loading,.ready").slideUp();
+						//$("img.loading").slideUp();
 					}
 					else{ //何も取得できなかった場合
 					////console.log("ERROR:"+data);
 						$(".addContent").text("続きの読み込みに失敗しました。");
 						//$(".connectFacebook").fadeOut();
 						//$(".addContent").slideDown();
-						$("div.loadIcon").slideUp();					
+						$("img.loading").slideUp();					
 					}
 					
 				},
@@ -107,7 +152,7 @@ function open(name){
 						$(".addContent").text("続きの読み込みに失敗しました。");
 						$(".connectFacebook").fadeOut();
 						$(".addContent").fadeIn();
-						$("div.loadIcon").slideUp();					
+						$("img.loading").slideUp();					
 				}
 			});
 		

@@ -81,7 +81,22 @@ body{
 }
 
 
+.getAcount{
+	text-align: right;
+	margin-bottom:-1.5em;
+	margin-right:1em;
+}
 
+.getAcount a{
+	font-size: 16px;
+	color: #58749b;
+	text-decoration: none;
+}
+
+.getAcount a:hover{
+	color:#000;
+	text-decoration: underline;
+}
 
 .addForm{
 	position: relative;

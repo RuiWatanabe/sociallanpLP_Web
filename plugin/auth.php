@@ -16,7 +16,7 @@ $code = md5($mail);
 ///header('Content-type:text/plain; charset=utf-8');
 
 
-$sql = "SELECT * FROM ".DB_NAME.".State WHERE Code LIKE '$code' LIMIT 0, 1;";
+$sql = "SELECT * FROM ".DB_NAME.".User WHERE Code LIKE '$code' LIMIT 0, 1;";
 //$sql = "SELECT TimeStamp FROM ".DB_NAME.".ReaderTable WHERE User LIKE '$user' ORDER BY TimeStamp DESC LIMIT 0, 1 ";
 
 $result = mysql_query($sql);
@@ -25,7 +25,7 @@ $result = mysql_query($sql);
 	if(!$result){
 		//echo '【DB検索エラー】: ' . mysql_error();
 		//print_r(mysql_num_rows($result));
-		echo "false:".mysql_error();
+		echo "false : サーバー上にあなたの登録情報が見つかりませんでした。 : $code : $mail ";
 	}else{ //検索できた場合
 		//print_r(mysql_num_rows($result));
 		$data = mysql_fetch_assoc($result);
@@ -34,9 +34,11 @@ $result = mysql_query($sql);
 				mysql_query($sql);
 			echo $data['Code'];
 		}else
-			echo "false";
+			echo "false : サーバー上の登録情報と、あなたのメールアドレスが照合できませんでした。 : $code : $mail ";
+			//echo $data['Code'];
 	}
 
+	//echo $_POST['mail'];
 /*
 
 
