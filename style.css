@@ -1,0 +1,185 @@
+
+
+body{
+	background: url("../image/back.gif") repeat;
+}
+
+
+.offerbutton{
+	width:840px;
+	height: 110px;
+	background-image: url("image/offerbutton_off.png");
+	color: rgba(255,255,255,0);
+	background-size: cover;
+}
+
+.offerbutton:hover{
+	background-image: url("image/offerbutton_on.png");
+	color: rgba(255,255,255,0);
+}
+
+.formbutton{
+	background-image: url("image/offerbutton_off.png");
+}
+
+.formbutton:hover{
+	background-image: url("image/formbutton_on.png");
+}
+
+
+.formBackImg{
+	z-index:-999;
+}
+
+.content{
+	margin-right:auto;
+	margin-left: auto;
+	width:900px;	
+	position: relative;
+	padding-bottom: 30px;
+}
+
+
+.content img.script{
+	margin-top:20px;	
+}
+
+.content>img{
+	margin-top:25px;
+	margin-bottom:25px;
+}
+
+.header{
+	width:100%;
+	background: url("../image/header_back.png") repeat-x;
+
+	background-size: 100%;
+
+	background-position: center top;
+	-webkit-background-position: center top;
+	-moz-background-position: center top;
+}
+
+
+.header .dlButton{
+	position: absolute;
+	bottom:	110px;
+	left: 30px;
+}
+
+
+
+.download{
+	position: relative;
+	margin-top:20px;
+}
+
+.download .connectFacebook{
+	position: absolute;	
+	bottom:110px;
+	left: 30px;	
+}
+
+
+
+
+.addForm{
+	position: relative;
+	width:706px;
+	height:414px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.addForm img{
+	position: absolute;
+}
+
+.addForm input{
+	position: absolute;
+	padding:3px;
+	width:300px;
+	font-size:14px;
+}
+
+.addForm .submitButton div{
+position: absolute;
+	bottom:30px;
+	left:28%;
+	width:300px;
+	height:60px;
+	background-image: url("image/formbutton_off.png");
+}
+
+.addForm .submitButton div:hover{
+	background-image: url("image/formbutton_on.png");	
+}
+
+.addForm .name input{
+	top: 134px;	
+	left:28%;
+}
+.addForm .mail input{
+	top: 184px;
+	left:28%;
+}
+
+.addForm .name label{
+	top: 135px;	
+}
+.addForm .mail label{
+	top: 185px;
+}
+
+
+.addForm label{
+	right:25%;
+	font-size:16px;
+	position: absolute;
+	z-index:5;
+	color:#ed4400;
+	font-weight: bold;
+}
+
+
+.loadIcon{
+	text-align: center;
+}
+
+.submitButton{
+	cursor: pointer;
+}
+
+
+/*YUI CSS Reset*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
+	margin:0;
+	padding:0;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+fieldset,img { 
+	border:0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+	font-style:normal;
+	font-weight:normal;
+}
+ol,ul {
+	list-style:none;
+}
+caption,th {
+	text-align:left;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-size:100%;
+	font-weight:normal;
+}
+q:before,q:after {
+	content:'';
+}
+abbr,acronym { border:0;
+}
+ 
