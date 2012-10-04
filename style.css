@@ -74,7 +74,7 @@ body{
 	margin-top:20px;
 }
 
-.download .connectFacebook{
+.download .socialLanp{
 	position: absolute;	
 	bottom:110px;
 	left: 30px;	
@@ -117,7 +117,7 @@ body{
 	font-size:14px;
 }
 
-.addForm .submitButton div{
+.addForm .submitButton{
 position: absolute;
 	bottom:30px;
 	left:28%;
@@ -126,7 +126,7 @@ position: absolute;
 	background-image: url("image/formbutton_off.png");
 }
 
-.addForm .submitButton div:hover{
+.addForm .submitButton:hover{
 	background-image: url("image/formbutton_on.png");	
 }
 
@@ -166,6 +166,12 @@ position: absolute;
 }
 
 
+
+
+
+
+
+
 /*YUI CSS Reset*/
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
 	margin:0;
@@ -198,3 +204,25 @@ q:before,q:after {
 abbr,acronym { border:0;
 }
  
+ 
+ 
+ 
+/* thanks */
+
+.setting,.movie{
+	position: relative;
+}
+
+.setting img.set{
+	position: absolute;
+	top:160px;
+	left:35px;
+}
+
+.movie iframe{
+	position: absolute;
+	top:400px;
+	left:120px;	
+}
+
+
