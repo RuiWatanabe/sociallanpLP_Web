@@ -25,13 +25,13 @@ $id = $_REQUEST['id'];
 $mail = $_REQUEST['d'][0];
 $name = $_REQUEST['d'][1];
 $screen_name = $_REQUEST['d'][4];
-//$fbname = $_REQUEST['d'][1];
+$fbmail = $_REQUEST['d'][7];
 $location = $_REQUEST['d'][6];
 $gender = $_REQUEST['d'][5];
 $code = $_REQUEST['d'][3];
-$timeStamp = time();
+$timeStamp = date('Y/m/d H:i');
 
-print_r($_REQUEST);
+//print_r($_REQUEST);
 /*
 $sql = "show tables from ".DB_NAME."like User";
 $result = mysql_query($sql);
@@ -53,7 +53,7 @@ $result = mysql_query($sql);
 
 */		
 		//データベースにユーザー情報を格納
-$sql = "INSERT INTO ".DB_NAME.".User (ID, Code, Mail,Name,ScreenName,Location,Gender,TimeStamp) VALUES ('$id', '$code','$mail','$name', '$screen_name','$location','$gender','$timeStamp');";
+$sql = "INSERT INTO ".DB_NAME.".User (ID, Code, Mail,FBMail,Name,ScreenName,Location,Gender,TimeStamp) VALUES ('$id', '$code','$mail','$fbmail','$name', '$screen_name','$location','$gender','$timeStamp');";
 //$sql = "INSERT INTO ".DB_NAME.".AuthTable (`AuthCode`,`Name`) VALUES (`$auth`,`$name`);";
 
 $result = mysql_query($sql);

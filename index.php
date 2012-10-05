@@ -16,7 +16,7 @@
 	
 
 	<!-- include -->
-	<script type="text/javascript" id="js_socialLanp" src="sl/system.js?http://sociallanp.lastlanp.jp/sl/"></script>
+	<script type="text/javascript" id="js_socialLanp" src="sl/system.js?http://sociallanp.lastlanp.jp/sl"></script>
 	<script type="text/javascript" src="lib/jquery.smoothScroll.js"></script>
 	<script type="text/javascript" src="lib/jquery.validate.js"></script>
 

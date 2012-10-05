@@ -22,7 +22,7 @@ else{
     
      if($user && isset($_REQUEST['code'])&&isset($_REQUEST['state'])){
           $login = $facebook->getAccessToken();
-          $u = $facebook->api("/me&locale=ja_JP");
+          //$userInfo = $facebook->api("/me&locale=ja_JP");
      }
      else{
           $login = false;    
@@ -33,6 +33,7 @@ else{
 //facebookにシェアする
   //$user = $facebook->getUser();
 $return = "error";
+$userinfo = "";
 if($login != false){
             try{
                  
@@ -52,6 +53,9 @@ if($login != false){
   }
   else{
       $return = $return." : 正常にログインできていません。";
+      if(!isset($_REQUEST['code'])) $return = $return."リクエストコードが取得できていません。";			      
+      if($facebook->getAccessToken()) $return = $return."APIでアクセストークンが取得できません。";			            
+      //$facebook->destroySession();
   }
      
      
@@ -96,9 +100,15 @@ if(!$employ) $employ = $me['education']['0']['school']['name'];
 }
 //print_r($contents);
 
-
-
-//}
+/*
+	$ret[] = array(
+		'userInfo' => $userInfo,
+		'flag' => $return,
+		'token' => $facebook->getAccessToken(),
+	);
+	
+	$returnData = join(”,”,$ret);
+//}*/
 ?>
 
 <html>
@@ -111,7 +121,7 @@ if(!$employ) $employ = $me['education']['0']['school']['name'];
 function closeWindow(){
 
 	//window.parent.callback('<?php echo $token; ?>');
-	window.opener.callback('<?php echo $return; ?>');
+	window.opener.callback('<?php echo $facebook->getAccessToken(); ?>');
 	window.close();
 	//$('.tbox,.tmask',parent.document).stop().animate({opacity:'0'});
 	//window.parent.

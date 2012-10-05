@@ -1,5 +1,5 @@
 <?php
-require "plugin/database.php";
+require "admin/database.php";
 
 $code = $_REQUEST['code'];
 $nowtime = strtotime("now");
@@ -30,17 +30,20 @@ $result = mysql_query($sql);
 
 //メールに添付されているCodeが、データベースに格納されているものかどうかを調べる
 $sql = "SELECT TimeStamp FROM ".DB_NAME.".User WHERE `Code` LIKE '$code';";
-
 $result = mysql_query($sql);
-$data = mysql_fetch_assoc($result);
-$timestamp = $data["TimeStamp"];
 
-if($timestamp>1){	
-	//echo "<br>".$timestamp;
-	$limit = date(' m月d日 H時i分', $timestamp+86400 );
+if($result){
+	$data = mysql_fetch_assoc($result);
+	$timestamp = $data["TimeStamp"];
+	
+	if($timestamp>1){	
+		$limit = date(' m月d日 H時i分', $timestamp+86400 );
+	}
 }
-
-
+else{
+	print_r("正常に会員登録されていません。");
+	break;
+}
 
 //リミットを超えていない場合、ダウンロード開始
 if($nowtime < $timestamp+86400){

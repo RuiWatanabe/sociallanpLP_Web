@@ -33,7 +33,7 @@ else if(window.attachEvent) {
 
 
 
-
+var callBackData = new Array();
 
 var dir = "system";
 var contentPass = ""; //contentフォルダまでのパス
@@ -163,11 +163,12 @@ function debug(){
 	
 }
 
-function callback(message){
-	console.log(message);
-	if(message.indexOf("true") != -1){
+function callback(_data){
+	//console.log(_data);
+//	if(_data['flag'].indexOf("true") != -1){
+	if(_data != ""){
 		$("div.loadIcon").slideDown();
-		open(message);
+		open(_data);
 	}
 }
 
@@ -192,7 +193,7 @@ function socialButtonClick(){
 */
 
 //記事を開く
-function open(name){
+function open(_data){
 
 
 /*
@@ -212,8 +213,8 @@ function open(name){
 			$.ajax({
 				type: "POST",
 				//async: false,
-				data: userInfo,
-				url: contentPass+"content/"+label+'.php',
+				data: "token="+_data,
+				url: contentPass+"/content/"+label+'.php',
 				success: function(data){
 					if(data!=""){ //何かしらのコンテンツが取得できた場合
 						$("img.loading").slideUp();
@@ -248,7 +249,7 @@ function open(name){
 	}
 	else{
 		prior = false;
-		open(name);
+		open(_data);
 		console.log("先読みデータが取得できなかったため、通常の方法で再取得します。");
 	}
 
