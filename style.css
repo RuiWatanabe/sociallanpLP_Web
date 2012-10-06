@@ -5,6 +5,15 @@ body{
 }
 
 
+.facepile{
+	margin-right: auto;
+	margin-left: auto;
+	border: 3px double #2c4f83;
+	padding: 5px;
+	background-color: rgba(32,56,100,0.16);
+	margin: 0 5px;
+}
+
 .offerbutton{
 	width:840px;
 	height: 110px;
@@ -164,8 +173,6 @@ position: absolute;
 .submitButton{
 	cursor: pointer;
 }
-
-
 
 
 

@@ -60,6 +60,18 @@
 <img src="image/7.png" alt="2" width="" height="" />
 <img src="image/8.png" alt="2" width="" height="" />
 
+<div class="facepile">
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1&appId=114404745379200";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	
+	<div class="fb-login-button" data-show-faces="true" data-width="800" data-max-rows="1"></div>
+</div>
 
 <!--
 <div class="loadIcon" style="display:none;"><a href="http://sociallanp.lastlanp.jp/" target="_blank"><img class="system" src="system/images/lanp_off.png" /></a><img class="loading" src="system/images/load.gif" /></div>

@@ -163,12 +163,16 @@ function debug(){
 	
 }
 
-function callback(_data){
-	//console.log(_data);
+function callback(_data,_return){
+	//console.log(_return.indexOf("true"));
+	//console.log(_return);
 //	if(_data['flag'].indexOf("true") != -1){
-	if(_data != ""){
+	if(_return.indexOf("true") == 0){
 		$("div.loadIcon").slideDown();
 		open(_data);
+	}
+	else{
+		console.log("認証しなければ、利用できません。");
 	}
 }
 

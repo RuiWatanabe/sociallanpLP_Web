@@ -38,7 +38,7 @@ if($data){
 }
 else{
 	//データベースにユーザー情報を格納
-	$sql = "INSERT INTO ".DB_NAME.".Visiter (ID, Code, Mail,FBMail,Name,ScreenName,Location,Gender,TimeStamp) VALUES ('$id', '$code','$fbmail','$fbmail','$name', '$screen_name','$location','$gender','$timeStamp');";
+	$sql = "INSERT INTO ".DB_NAME.".Visiter (ID, Mail,Name,ScreenName,Location,Gender,Employ,EntranceID,EntranceName,AddTime,UpTime) VALUES ('$screen_id','$fbmail','$name', '$screen_name','$location','$gender','$employ','$entrance_id','$entrance_name','$addTime','$addTime');";
 	
 	$result = mysql_query($sql);
 		print_r ('<br>'.mysql_error().":".$sql);

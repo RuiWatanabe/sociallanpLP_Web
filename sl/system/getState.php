@@ -19,7 +19,7 @@
 	$params = array(
 		//'display'=>'popup',
 		  'scope' => 'publish_stream,email',
-		  'redirect_uri' => CALLBACK_URL
+		  'redirect_uri' => CALLBACK_URL,
 	);
 	$loginUrl = $facebook->getLoginUrl($params); //ログインURLの取得
 	$logoutUrl = $facebook->getLogoutUrl();	//ログアウトURLの取得

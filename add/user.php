@@ -46,4 +46,44 @@ else{
 		print_r ('<br>'.mysql_error().":".$sql);
 }
 
+
+
+
+
+//Facebookメッセージを送信する
+//$user = $u['username'];
+//$name = $u['name'];
+//$mail = $u['email'];
+//$code = md5($u['email']);
+
+$body= 
+"$name 様
+
+ソーシャルランプへのユーザー登録、ありがとうございます。
+
+あなたの認証用メールアドレス
+$fbmail
+※システムを利用する際に必要になります。
+
+こちらのURLからダウンロードすることができます。
+http://sociallanp.lastlanp.jp/download.php?type=web&code=".$code."
+※上記のダウンロードURLは24時間で失効となりますので、
+お早めのダウンロードをお願いいたします。";
+
+
+mb_language("Ja") ;
+mb_internal_encoding("UTF-8");
+$mailto=$screen_name."@facebook.com";
+$subject="WpSocialLanp: ダウンロードURLの送付";
+$mailfrom="From:" .mb_encode_mimeheader("ラストランプ運営チーム") ."< $fbmail >";
+$re = mb_send_mail($mailto,$subject,$body,$mailfrom);
+
+//print_r("$mailto : $body : $re");
+
+
+
+
+
+
+
 ?>

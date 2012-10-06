@@ -15,7 +15,7 @@ require 'sdk/facebook.php';
 
 //ログインをキャンセルした場合の処理
 if($_REQUEST['error']){
-     $facebook->destroySession();
+     //$facebook->destroySession();
      $login = false;
 }
 else{
@@ -44,19 +44,20 @@ if($login != false){
 		  		 	if(SAFEMODE != TRUE){
 		 	 		 	$facebook->api('/me/feed', 'POST', array('message' => "この無料ツール、かなり凄いです！\n\n何がすごいって、こんな感じでfacebookで口コミがどんどん広がるんです！【ブログを拡散したい】とか【お店にお客さんをたくさん呼びたい】とか【商品をもっと認知させたい】とか【リスト命！】という方は、このツールを使えば一瞬です。一気にお客さんが集まります。\n\nこれからのマーケティングに新しい風を巻き起こしそうな予感です。\n\nツールの設置自体も簡単なのでとりあえずダウンロードしておくことをお勧めします！無料配布期間は今だけみたいなのでお早めに♪" , 'link' => "http://sociallanp.lastlanp.jp/"));
 		 	 		 	$return = "true : FaceBookにポストしました。内容: ".$postdata;
+		 	 		 	$token = $facebook->getAccessToken();
 		  		 	}
 		  		 	else{
 		 	 		 	$return = "true : セーフモードになっているため、ポストしませんでした。";	  		 	
 		  		 	}
            }
              catch(Exception $e){
-                 $return = $return." : ポストに失敗しました。:".$login.":APP_ID";
+                 $return = $return." : ポストに失敗しました。:".$login.":".APP_ID;
                 }
   }
   else{
       $return = $return." : 正常にログインできていません。";
-      if(!isset($_REQUEST['code'])) $return = $return."リクエストコードが取得できていません。";			      
-      if($facebook->getAccessToken()) $return = $return."APIでアクセストークンが取得できません。";			            
+      //if(!isset($_REQUEST['code'])) $return = $return."リクエストコードが取得できていません。";			      
+      //if($facebook->getAccessToken()) $return = $return."APIでアクセストークンが取得できません。";			            
       //$facebook->destroySession();
   }
      
@@ -81,8 +82,8 @@ function closeWindow(){
 
 	//window.parent.callback('<?php echo $token; ?>');
 	//console.log("errorMessage:<?php echo $return; ?>");
-	window.opener.callback('<?php echo $facebook->getAccessToken(); ?>');
-	window.close();
+	window.opener.callback('<?php echo $token; ?>','<?php echo $return; ?>');
+	//window.close();
 	//$('.tbox,.tmask',parent.document).stop().animate({opacity:'0'});
 	//window.parent.
 }
@@ -123,7 +124,7 @@ if(!$employ) $employ = $me['education']['0']['school']['name'];
 	$contents = file_get_contents($url, false, stream_context_create($options));
 	print_r($contents);
 	$contents = file_get_contents($url2, false, stream_context_create($options));
-	print_r($contents);
+	//print_r($contents);
 }
 else{
 	print_r("ユーザー情報が取得できていません。");
