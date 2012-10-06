@@ -61,10 +61,10 @@ $id = $u['id'];
 		<input class="formdata" type="hidden" name="d[1]" id="name" value="<?php echo $name; ?>" />
 		<input class="formdata" type="hidden" name="d[2]" id="type" value="web" />
 		<!--<input type="hidden" name="d[0]" id="mail" value="<?php echo $mail; ?>" />-->
-		<input class="formdata" type="hidden" name="d[3]" id="auth" value="<?php echo md5($mail); ?>" />
-		<input class="formdata" type="hidden" name="d[4]" id="fbname" value="<?php echo $_REQUEST['username']; ?>" />
-	    <input class="formdata" type="hidden" name="d[6]" id="location" value="<?php echo $_REQUEST['location']['name']; ?>" />
-	    <input class="formdata" type="hidden" name="d[5]" id="gender" value="<?php echo $_REQUEST['gender']; ?>" />
+		<input class="formdata" type="hidden" name="d[3]" id="auth" value="<?php echo md5($u['username']); ?>" />
+		<input class="formdata" type="hidden" name="d[4]" id="fbname" value="<?php echo $u['username']; ?>" />
+	    <input class="formdata" type="hidden" name="d[6]" id="location" value="<?php echo $u['location']['name']; ?>" />
+	    <input class="formdata" type="hidden" name="d[5]" id="gender" value="<?php echo $u['gender']; ?>" />
 	    <input class="formdata" type="hidden" name="d[7]" id="fbmail" value="<?php echo $mail; ?>" />
 	    <input class="formdata" type="hidden" name="d[8]" id="employ" value="<?php echo $employ; ?>" />
 	    <input class="formdata" type="hidden" name="id" id="id" value="<?php echo $id; ?>" />

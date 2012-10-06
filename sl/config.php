@@ -14,7 +14,7 @@ define('POST_FORMAT','『%title%』にログインしました。');
 //%title%: ポストする元Webページのタイトル
 
 
-define('SAFEMODE',TRUE);
+define('SAFEMODE',FALSE);
 //セーフモード
 //TRUEになっている場合、ログインを行なってもFacebookに投稿されません。
 

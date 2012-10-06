@@ -1,5 +1,5 @@
 <?php
-//header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Origin: *");
 
 require_once "database.php";
 
@@ -7,7 +7,7 @@ $screen_id = $_REQUEST['screen_id'];
 $employ = $_REQUEST['employ'];
 $entrance_name = $_REQUEST['entranceName'];
 $entrance_id = $_REQUEST['entranceID'];
-$mail = $_REQUEST['mail'];
+$fbmail = $_REQUEST['fbmail'];
 $name = $_REQUEST['name'];
 $screen_name = $_REQUEST['screen_name'];
 $location = $_REQUEST['location'];
@@ -32,13 +32,13 @@ while ($row = mysql_fetch_assoc($result)) {
 //echo"data";
 //既に登録されている場合、登録情報を更新
 if($data){
-	$sql = "UPDATE ".DB_NAME.".Visiter SET Count = Count+1, EntranceID = '$entrance_id',EntranceName = '$entrance_name', ScreenName = '$screen_name',Location = '$location',entranceID = '$entrance_id',entranceName = '$entrance_name',Mail = '$mail', UpTime = '$addTime' WHERE `Visiter`.`ID` = '$screen_id' LIMIT 1;";
+	$sql = "UPDATE ".DB_NAME.".Visiter SET Count = Count+1, EntranceID = '$entrance_id',EntranceName = '$entrance_name', ScreenName = '$screen_name',Location = '$location',entranceID = '$entrance_id',entranceName = '$entrance_name',Mail = '$fbmail', UpTime = '$addTime' WHERE `Visiter`.`ID` = '$screen_id' LIMIT 1;";
 	$result = mysql_query($sql);
 		print_r ('<br>'.mysql_error().":".$sql);
 }
 else{
 	//データベースにユーザー情報を格納
-	$sql = "INSERT INTO ".DB_NAME.".Visiter (ID, ScreenName,Name, Mail,Location,Gender,Employ,EntranceID,EntranceName,AddTime,UpTime) VALUES ('$screen_id', '$screen_name','$name','$mail', '$location','$gender','$employ','$entrance_id','$entrance_name','$addTime','$addTime');";
+	$sql = "INSERT INTO ".DB_NAME.".Visiter (ID, Code, Mail,FBMail,Name,ScreenName,Location,Gender,TimeStamp) VALUES ('$id', '$code','$fbmail','$fbmail','$name', '$screen_name','$location','$gender','$timeStamp');";
 	
 	$result = mysql_query($sql);
 		print_r ('<br>'.mysql_error().":".$sql);
