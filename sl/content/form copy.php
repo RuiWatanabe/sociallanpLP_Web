@@ -10,8 +10,6 @@ $facebook = new Facebook(array(
 $facebook->setAccessToken($_REQUEST['token']); //ログインしているかどうかをチェック。している場合ユーザIDを返す。
 //$_REQUEST[]
 
-//print_r($facebook);
-
 $u = $facebook->api("/me&locale=ja_JP");
 //print_r($u);
 
@@ -54,7 +52,7 @@ $id = $u['id'];
 
 <div class="addForm">
 
-	<img src="image/form.png" class="formBackImg" />
+	<img src="image/form.jpg" class="formBackImg" alt="form" width="" height="" />
 	 
 	<form class="dlForm" method="post" action="http://lanp.biz/ad/do">
 		<input type="hidden" name="mid" value="soci" />
@@ -81,7 +79,7 @@ $id = $u['id'];
 		</div>
 	</form>
 	<a onclick="submit()" class="submitButton" name="submit">
-		<div alt="formbutton_off_57" /></div>
+		<div alt="formbutton_off_57" width="" height="" /></div>
 	</a>
 	
 <!--

@@ -35,14 +35,14 @@
 
 <div class="header">
 	<div class="content">
-	<img src="image/header.png" alt="header" width="" height="" />
-	<img class="script" src="image/script.png" alt="offer1" width="" height="" />
+	<img src="image/header.png" alt="header" />
+	<img class="script" src="image/script.png" alt="offer1"  />
 
 		<a class="dlButton offerbutton" href="#download">
 		</a>
 <!--
 		<a class="dlButton" href="#download" onclick="openLink.click()">
-			<img src="image/offerbutton_off_10.png" alt="offerbutton_off_10" width="" height="" />
+			<img src="image/offerbutton_off_10.png" alt="offerbutton_off_10"  />
 		</a>
 -->
 	</div>
@@ -52,14 +52,15 @@
 
 <div class="content">
 
-<img src="image/2.png" alt="2" width="" height="" />
-<img src="image/3.png" alt="2" width="" height="" />
-<img src="image/4.png" alt="2" width="" height="" />
-<img src="image/5.png" alt="2" width="" height="" />
-<img src="image/6.png" alt="2" width="" height="" />
-<img src="image/7.png" alt="2" width="" height="" />
-<img src="image/8.png" alt="2" width="" height="" />
+<img src="image/2.png" alt="2"  />
+<img src="image/3.png" alt="2"  />
+<img src="image/4.png" alt="2"  />
+<img src="image/5.png" alt="2"  />
+<img src="image/6.png" alt="2"  />
+<img src="image/7.png" alt="2"  />
+<img src="image/8.png" alt="2"  />
 
+<!--
 <div class="facepile">
 	<div id="fb-root"></div>
 	<script>(function(d, s, id) {
@@ -70,8 +71,12 @@
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 	
-	<div class="fb-login-button" data-show-faces="true" data-width="800" data-max-rows="1"></div>
+	<div class="fb-login-button" data-show-faces="true" data-width="800" data-size="xlarge" data-max-rows="20"></div>
 </div>
+-->
+
+
+
 
 <!--
 <div class="loadIcon" style="display:none;"><a href="http://sociallanp.lastlanp.jp/" target="_blank"><img class="system" src="system/images/lanp_off.png" /></a><img class="loading" src="system/images/load.gif" /></div>
@@ -81,7 +86,7 @@
 </div>
 
 <div class="download" name="download" id="download">
-	<span class="ready"><img src="image/9.png" alt="offer2" width="" height="" /></span>
+	<span class="ready"><img src="image/9.png" alt="offer2"  /></span>
 	
 	<div class="connectFacebook">
 		<a id="openLink" href="" target="_blank">
@@ -92,9 +97,9 @@
 </div>
 -->
 <div class="download" name="download" id="download">
-	<span class="ready"><img src="image/9.png" alt="offer2" width="" height="" /></span>
+	<span class="ready"><img src="image/9.png" alt="offer2"  /></span>
 
-	<a class="socialLanp" rel="form" target="_blank"><img src="image/offerbutton_off.png" alt="offerbutton_off" width="" height="" /></a>
+	<a class="socialLanp" rel="form" target="_blank"><img src="image/offerbutton_off.png" alt="offerbutton_off"  /></a>
 </div>
 
 </div><!-- wrapper -->

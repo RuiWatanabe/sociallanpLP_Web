@@ -5,15 +5,6 @@ body{
 }
 
 
-.facepile{
-	margin-right: auto;
-	margin-left: auto;
-	border: 3px double #2c4f83;
-	padding: 5px;
-	background-color: rgba(32,56,100,0.16);
-	margin: 0 5px;
-}
-
 .offerbutton{
 	width:840px;
 	height: 110px;
@@ -85,7 +76,7 @@ body{
 
 .download .socialLanp{
 	position: absolute;	
-	bottom:110px;
+	bottom:76px;
 	left: 30px;	
 }
 
@@ -144,8 +135,12 @@ position: absolute;
 	left:28%;
 }
 .addForm .mail input{
-	top: 184px;
-	left:28%;
+	top: 141px;
+	left: 221px;
+	height: 40px;
+	width: 420px;
+	font-size: 27px;
+	font-weight: bold;
 }
 
 .addForm .name label{
@@ -153,6 +148,7 @@ position: absolute;
 }
 .addForm .mail label{
 	top: 185px;
+
 }
 
 
@@ -173,6 +169,8 @@ position: absolute;
 .submitButton{
 	cursor: pointer;
 }
+
+
 
 
 

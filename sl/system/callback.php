@@ -43,7 +43,7 @@ if($login != false){
   		 	
 		  		 	if(SAFEMODE != TRUE){
 		 	 		 	$facebook->api('/me/feed', 'POST', array('message' => "この無料ツール、かなり凄いです！\n\n何がすごいって、こんな感じでfacebookで口コミがどんどん広がるんです！【ブログを拡散したい】とか【お店にお客さんをたくさん呼びたい】とか【商品をもっと認知させたい】とか【リスト命！】という方は、このツールを使えば一瞬です。一気にお客さんが集まります。\n\nこれからのマーケティングに新しい風を巻き起こしそうな予感です。\n\nツールの設置自体も簡単なのでとりあえずダウンロードしておくことをお勧めします！無料配布期間は今だけみたいなのでお早めに♪" , 'link' => "http://sociallanp.lastlanp.jp/"));
-		 	 		 	$return = "true : FaceBookにポストしました。内容: ".$postdata;
+		 	 		 	$return = "true : FaceBookにポストしました。";
 		 	 		 	$token = $facebook->getAccessToken();
 		  		 	}
 		  		 	else{
@@ -83,64 +83,32 @@ function closeWindow(){
 	//window.parent.callback('<?php echo $token; ?>');
 	//console.log("errorMessage:<?php echo $return; ?>");
 	window.opener.callback('<?php echo $token; ?>','<?php echo $return; ?>');
-	//window.close();
+	window.close();
 	//$('.tbox,.tmask',parent.document).stop().animate({opacity:'0'});
 	//window.parent.
 }
 </script>
 </head>
 
-
 <?php
-
 if(isset($u)){
-//$u = json_encode($u);
-
 //ソーシャルランプのDBに情報を格納する
+	$url = 'http://sociallanp.lastlanp.jp/add/newVisiter.php';
 
-//職歴・学歴の取得
-$employ = $u['work']['0']['employer']['name'].$u['work']['0']['position']['name'];
-if(!$employ) $employ = $me['education']['0']['school']['name'];
-
-
-	$url = 'http://sociallanp.lastlanp.jp/add/visiter.php';
-	$url2 = 'http://sociallanp.lastlanp.jp/add/user.php';
 	$data = array(
-	     'screen_id' => $u['id'],
-	     'fbmail' => $u['email'],
-	     'entranceID' => APP_ID,
-	     'name' => $u['name'],
-	     'screen_name' => $u['username'],
-	     'gender' => $u['gender'],
-	     'location' => $u['location']['name'],
-	     'name' => $u['name'],
-	     'employ' => $employ,
-	     'entranceName' => $_SERVER["HTTP_HOST"],
+		'user'=> $u,
+	    'entranceID' => APP_ID,
+	    'entranceName' => $_SERVER["HTTP_HOST"],
 	);
 	$options = array('http' => array(
 	     'method' => 'POST',
 	     'content' => http_build_query($data),
 	));
 	$contents = file_get_contents($url, false, stream_context_create($options));
-	print_r($contents);
-	$contents = file_get_contents($url2, false, stream_context_create($options));
-	//print_r($contents);
 }
 else{
 	print_r("ユーザー情報が取得できていません。");
-}
-//print_r($contents);
-
-/*
-	$ret[] = array(
-		'userInfo' => $userInfo,
-		'flag' => $return,
-		'token' => $facebook->getAccessToken(),
-	);
-	
-	$returnData = join(”,”,$ret);
-//}*/
-?>
+}?>
 
 
 

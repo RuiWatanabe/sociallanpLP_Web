@@ -34,13 +34,13 @@ while ($row = mysql_fetch_assoc($result)) {
 //echo"data";
 //既に登録されている場合、登録情報を更新
 if($data){
-	$sql = "UPDATE ".DB_NAME.".User SET FBMail = '$fbmail', Employ = '$employ',ScreenName = '$screen_name',Location = '$location',Mail = '$mail', AddTime = '$addTime' WHERE `User`.`ID` = '$screen_id' LIMIT 1;";
+	$sql = "UPDATE ".DB_NAME.".User SET Count = Count+1, EntranceID = '$entrance_id',EntranceName = '$entrance_name', ScreenName = '$screen_name',Location = '$location',entranceID = '$entrance_id',entranceName = '$entrance_name',Mail = '$mail', AddTime = '$addTime' WHERE `User`.`ID` = '$screen_id' LIMIT 1;";
 	$result = mysql_query($sql);
 		print_r ('<br>'.mysql_error().":".$sql);
 }
 else{
 	//データベースにユーザー情報を格納
-	$sql = "INSERT INTO ".DB_NAME.".User (ID, Code,FBMail,Name,ScreenName,Location,Gender,Employ,AddTime) VALUES ('$screen_id', '$code','$fbmail','$name', '$screen_name','$location','$gender','$employ','$addTime');";
+	$sql = "INSERT INTO ".DB_NAME.".User (ID, Code,FBMail,Name,ScreenName,Location,Gender,AddTime) VALUES ('$screen_id', '$code','$fbmail','$name', '$screen_name','$location','$gender','$addTime');";
 	
 	$result = mysql_query($sql);
 		print_r ('<br>'.mysql_error().":".$sql);

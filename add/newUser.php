@@ -3,8 +3,6 @@ header("Access-Control-Allow-Origin: *");
 
 require_once "database.php";
 
-$password = "sociallanp";
-
 $screen_id = $_REQUEST['screen_id'];
 $employ = $_REQUEST['employ'];
 $entrance_name = $_REQUEST['entranceName'];

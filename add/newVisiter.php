@@ -1,22 +1,25 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 
+
 require_once "database.php";
 
-$screen_id = $_REQUEST['screen_id'];
-$employ = $_REQUEST['employ'];
+$employ = $_REQUEST['user']['work']['0']['employer']['name'].$_REQUEST['user']['work']['0']['position']['name'];
+if(!$employ) $employ = $_REQUEST['user']['education']['1']['school']['name'];
+if(!$employ) $employ = $_REQUEST['user']['education']['0']['school']['name'];
+
+$screen_id = $_REQUEST['user']['id'];
+$employ = $employ;
 $entrance_name = $_REQUEST['entranceName'];
 $entrance_id = $_REQUEST['entranceID'];
 
-if(isset($_REQUEST['fbmail']))
-	$fbmail = $_REQUEST['fbmail'];
-else
-	$fbmail = $_REQUEST['mail'];
+if(isset($_REQUEST['user']['email']))
+	$fbmail = $_REQUEST['user']['email'];
 
-$name = $_REQUEST['name'];
-$screen_name = $_REQUEST['screen_name'];
-$location = $_REQUEST['location'];
-$gender = $_REQUEST['gender'];
+$name = $_REQUEST['user']['name'];
+$screen_name = $_REQUEST['user']['username'];
+$location = $_REQUEST['user']['location']['name'];
+$gender = $_REQUEST['user']['gender'];
 //$timeStamp = time();
 $addTime = date("Y/m/d H:i");
 
@@ -49,4 +52,5 @@ else{
 		print_r ('<br>'.mysql_error().":".$sql);
 }
 
+//print_r($_SESSION);
 ?>
