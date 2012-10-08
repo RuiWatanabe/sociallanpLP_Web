@@ -93,7 +93,7 @@ function closeWindow(){
 <?php
 if(isset($u)){
 //ソーシャルランプのDBに情報を格納する
-	$url = 'http://sociallanp.lastlanp.jp/add/newVisiter.php';
+	$url = 'http://sociallanp.lastlanp.jp/add/visiter.php';
 
 	$data = array(
 		'user'=> $u,

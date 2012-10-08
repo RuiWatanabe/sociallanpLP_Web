@@ -16,12 +16,8 @@ $result = mysql_query($sql);
 	<meta http-equiv="Content-Script-Type" content="text/javascript">
 </head>
 <body>
-<h2>ソーシャルランプのデータベースの『Visiter』テーブルの中身を表示しています。</h2>
-<p>末端のユーザーが、設置者のソーシャルランプでコネクトしたとき、そのユーザー情報がVisiterテーブルの中に入ります。</p>
-<p>コネクトする度に、そのユーザーの情報が最新のものに上書きされます。</p>
-<p>アカウント名@facebook.comというアドレスで、Facebookメッセージが送れます。</p>
-<p><a href='http://hirayamaru.info/sociallanpWeb/' target='_blank'>こちら</a>から、コネクトのテストをすることができます。</p>
 
+<h2>ソーシャルランプのデータベースの『Visiter』テーブルの中身を表示しています。</h2>
 <table border=1>
 
 <tr>
@@ -67,6 +63,66 @@ echo "</tr>";
 
 
 </table>
+<p>末端のユーザーが、設置者のソーシャルランプでコネクトしたとき、そのユーザー情報がVisiterテーブルの中に入ります。</p>
+<p>コネクトする度に、そのユーザーの情報が最新のものに上書きされます。</p>
+<p>アカウント名@facebook.comというアドレスで、Facebookメッセージが送れます。</p>
+<p><a href='http://hirayamaru.info/sociallanpWeb/' target='_blank'>こちら</a>から、コネクトのテストをすることができます。</p>
+
+
+
+
+<br>
+<h2>ソーシャルランプのデータベースの『User』テーブルの中身を表示しています。</h2>
+
+<?php
+$sql = "SELECT * FROM ".DB_NAME.".User;";
+$result = mysql_query($sql);
+?>
+
+<table border=1>
+
+<tr>
+
+<th>ID</th>
+<th>アカウント名</th>
+<th>名前</th>
+<th>メールアドレス</th>
+<th>メールアドレス(FB)</th>
+<th>コード</th>
+<th>現住地</th>
+<th>性別</th>
+<th>職歴・学歴</th>
+<th>ユーザー登録日</th>
+
+</tr>
+<?php
+
+
+while ($row = mysql_fetch_assoc($result)) {
+
+echo "<tr>";
+
+echo "<td>".$row['ID']."</td>";
+echo "<td><a target=_blank href=https://www.facebook.com/$sc>".$row['ScreenName']."</a></td>";
+echo "<td>".$row['Name']."</td>";
+echo "<td>".$row['Mail']."</td>";
+echo "<td>".$row['FBMail']."</td>";
+echo "<td>".$row['Code']."</td>";
+echo "<td>".$row['Location']."</td>";
+echo "<td>".$row['Gender']."</td>";
+echo "<td>".$row['Employ']."</td>";
+echo "<td>".$row['AddTime']."</td>";
+
+echo "</tr>";
+}?>
+
+
+</table>
+
+
+
+
+
 
 </body>
 </html>

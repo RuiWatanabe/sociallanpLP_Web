@@ -8,46 +8,12 @@ $facebook = new Facebook(array(
 ));
 
 $facebook->setAccessToken($_REQUEST['token']); //ログインしているかどうかをチェック。している場合ユーザIDを返す。
-//$_REQUEST[]
-
-//print_r($facebook);
-
 $u = $facebook->api("/me&locale=ja_JP");
-//print_r($u);
 
 
 $employ = $u['work']['0']['employer']['name'].$u['work']['0']['position']['name'];
+if(!$employ) $employ = $u['education']['1']['school']['name'];
 if(!$employ) $employ = $u['education']['0']['school']['name'];
-
-$name = $u['name'];
-$mail = $u['email'];
-
-$id = $u['id'];
-
-/*
-	$url = 'http://sociallanp.lastlanp.jp/add/user.php';
-	$data = array(
-	     'screen_id' => $u['id'],
-	     'mail' => $mail,
-	     'entranceID' => APP_ID,
-	     'name' => $name,
-	     'screen_name' => $_REQUEST['username'],
-	     'gender' => $_REQUEST['gender'],
-	     'location' => $_REQUEST['location']['name'],
-	     'name' => $name,
-	     'code' => md5($mail),
-	     'employ' => $employ,
-	     'entranceName' => $_SERVER["HTTP_HOST"],
-	);
-	$options = array('http' => array(
-	     'method' => 'POST',
-	     'content' => http_build_query($data),
-	));
-	$ret = file_get_contents($url, false, stream_context_create($options));
-	print_r($ret);
-	
-*/
-//print_r($_REQUEST['token']);
 ?>
 
 <script type="text/javascript" src="lib/lp.js"></script>
@@ -60,19 +26,19 @@ $id = $u['id'];
 		<input type="hidden" name="mid" value="soci" />
 		<input type="hidden" name="fid" value="rlA2pZ" />
 		<input type="hidden" name="charcode" value="auto" />
-		<input class="formdata" type="hidden" name="d[1]" id="name" value="<?php echo $name; ?>" />
+		<input class="formdata" type="hidden" name="d[1]" id="name" value="<?php echo $u['name']; ?>" />
 		<input class="formdata" type="hidden" name="d[2]" id="type" value="web" />
 		<!--<input type="hidden" name="d[0]" id="mail" value="<?php echo $mail; ?>" />-->
 		<input class="formdata" type="hidden" name="d[3]" id="auth" value="<?php echo md5($u['username']); ?>" />
 		<input class="formdata" type="hidden" name="d[4]" id="fbname" value="<?php echo $u['username']; ?>" />
 	    <input class="formdata" type="hidden" name="d[6]" id="location" value="<?php echo $u['location']['name']; ?>" />
 	    <input class="formdata" type="hidden" name="d[5]" id="gender" value="<?php echo $u['gender']; ?>" />
-	    <input class="formdata" type="hidden" name="d[7]" id="fbmail" value="<?php echo $mail; ?>" />
+	    <input class="formdata" type="hidden" name="d[7]" id="fbmail" value="<?php echo $u['email']; ?>" />
 	    <input class="formdata" type="hidden" name="d[8]" id="employ" value="<?php echo $employ; ?>" />
-	    <input class="formdata" type="hidden" name="id" id="id" value="<?php echo $id; ?>" />
+	    <input class="formdata" type="hidden" name="id" id="id" value="<?php echo $u['id']; ?>" />
 		
 		<div class="mail">
-		    <input class="formdata" type="text" name="d[0]" id="mail" value="<?php echo $mail; ?>" class="" /></li>
+		    <input class="formdata" type="text" name="d[0]" id="mail" value="<?php echo $u['email']; ?>" class="" /></li>
 		</div>
 
 
@@ -104,6 +70,7 @@ function submit(){
 		data: arr.serializeArray(),
 		url: "http://sociallanp.lastlanp.jp/add/user.php",
 		success: function(getData){
+				//console.log(getData);
 				$(".center .submitButton").click();
 			},
 		error: function(getData){
