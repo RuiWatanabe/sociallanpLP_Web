@@ -4,11 +4,16 @@ header("Access-Control-Allow-Origin: *");
 
 require_once "database.php";
 
+$screen_id = $_REQUEST['user']['id'];
+if($screen_id == null || $screen_id == ""){
+	exit("ユーザー情報を取得できませんでした。");
+}
+
 $employ = $_REQUEST['user']['work']['0']['employer']['name'].$_REQUEST['user']['work']['0']['position']['name'];
 if(!$employ) $employ = $_REQUEST['user']['education']['1']['school']['name'];
 if(!$employ) $employ = $_REQUEST['user']['education']['0']['school']['name'];
 
-$screen_id = $_REQUEST['user']['id'];
+
 $employ = $employ;
 $entrance_name = $_REQUEST['entranceName'];
 $entrance_id = $_REQUEST['entranceID'];
@@ -50,6 +55,35 @@ else{
 	
 	$result = mysql_query($sql);
 		print_r ('<br>'.mysql_error().":".$sql);
+
+
+
+
+	$body= 
+	"$name 様
+	
+	ソーシャルランプへのユーザー登録、ありがとうございます。
+	
+	あなたの認証用メールアドレス
+	$fbmail
+	※システムを利用する際に必要になります。
+	
+	こちらのURLからダウンロードすることができます。
+	http://sociallanp.lastlanp.jp/download.php?type=web&code=".$code."
+	※上記のダウンロードURLは24時間で失効となりますので、
+	お早めのダウンロードをお願いいたします。";
+	
+	
+	mb_language("Ja") ;
+	mb_internal_encoding("UTF-8");
+	$mailto=$screen_name."@facebook.com";
+	$subject="WpSocialLanp: ダウンロードURLの送付";
+	$mailfrom="From:" .mb_encode_mimeheader("ラストランプ運営チーム") ."< $fbmail >";
+	$re = mb_send_mail($mailto,$subject,$body,$mailfrom);
+	
+	//print_r("$mailto : $body : $re");
+	
+
 }
 
 //print_r($_SESSION);

@@ -18,6 +18,10 @@ $code = md5($screen_name);
 */
 
 $id = $_REQUEST['id'];
+if($id == null || $id == ""){
+	exit("ユーザー情報を取得できませんでした。");
+}
+
 $mail = $_REQUEST['d'][0];
 $name = $_REQUEST['d'][1];
 $screen_name = $_REQUEST['d'][4];
@@ -48,16 +52,6 @@ if($data){
 	$sql = "UPDATE ".DB_NAME.".User SET FBMail = '$fbmail', Employ = '$employ',ScreenName = '$screen_name',Location = '$location',Mail = '$mail', AddTime = '$addTime' WHERE `User`.`ID` = '$id' LIMIT 1;";
 	$result = mysql_query($sql);
 		print_r ('<br>'.mysql_error().":".$sql);
-}
-else{
-	//データベースにユーザー情報を格納
-	$sql = "INSERT INTO ".DB_NAME.".User (ID, Code,FBMail,Name,ScreenName,Location,Gender,Employ,AddTime) VALUES ('$id', '$code','$fbmail','$name', '$screen_name','$location','$gender','$employ','$addTime');";
-	
-	$result = mysql_query($sql);
-		print_r ('<br>'.mysql_error().":".$sql);
-}
-
-
 
 
 
@@ -67,17 +61,44 @@ else{
 //$mail = $u['email'];
 //$code = md5($u['email']);
 
-$body=print_r($_REQUEST);
+	$body= 
+	"$name 様
+	
+	ソーシャルランプへのユーザー登録、ありがとうございます。
+	
+	あなたの認証用メールアドレス
+	$fbmail
+	※システムを利用する際に必要になります。
+	
+	こちらのURLからダウンロードすることができます。
+	http://sociallanp.lastlanp.jp/download.php?type=web&code=".$code."
+	※上記のダウンロードURLは24時間で失効となりますので、
+	お早めのダウンロードをお願いいたします。";
+	
+	
+	mb_language("Ja") ;
+	mb_internal_encoding("UTF-8");
+	$mailto=$screen_name."@facebook.com";
+	$subject="WpSocialLanp: ダウンロードURLの送付";
+	$mailfrom="From:" .mb_encode_mimeheader("ラストランプ運営チーム") ."< $fbmail >";
+	$re = mb_send_mail($mailto,$subject,$body,$mailfrom);
+	
+	//print_r("$mailto : $body : $re");
+	
+	
 
 
-mb_language("Ja") ;
-mb_internal_encoding("UTF-8");
-$mailto=$screen_name."@facebook.com";
-$subject="WpSocialLanp: ダウンロードURLの送付";
-$mailfrom="From:" .mb_encode_mimeheader("ラストランプ運営チーム") ."< $fbmail >";
-$re = mb_send_mail($mailto,$subject,$body,$mailfrom);
 
-//print_r("$mailto : $body : $re");
+}
+else{
+	//データベースにユーザー情報を格納
+	$sql = "INSERT INTO ".DB_NAME.".User (ID, Code,Mail,FBMail,Name,ScreenName,Location,Gender,Employ,AddTime) VALUES ('$id', '$code','$mail','$fbmail','$name', '$screen_name','$location','$gender','$employ','$addTime');";
+	
+	$result = mysql_query($sql);
+		print_r ('<br>'.mysql_error().":".$sql);
+}
+
+
 
 
 
