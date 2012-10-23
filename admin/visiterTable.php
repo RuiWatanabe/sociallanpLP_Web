@@ -14,6 +14,8 @@ $result = mysql_query($sql);
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta http-equiv="Content-Style-Type" content="text/css">
 	<meta http-equiv="Content-Script-Type" content="text/javascript">
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 </head>
 <body>
 
@@ -63,9 +65,6 @@ echo "</tr>";
 
 
 </table>
-<p>末端のユーザーが、設置者のソーシャルランプでコネクトしたとき、そのユーザー情報がVisiterテーブルの中に入ります。</p>
-<p>コネクトする度に、そのユーザーの情報が最新のものに上書きされます。</p>
-<p>アカウント名@facebook.comというアドレスで、Facebookメッセージが送れます。</p>
 <p><a href='http://hirayamaru.info/sociallanpWeb/' target='_blank'>こちら</a>から、コネクトのテストをすることができます。</p>
 
 
@@ -88,7 +87,7 @@ $result = mysql_query($sql);
 <th>名前</th>
 <th>メールアドレス</th>
 <th>メールアドレス(FB)</th>
-<th>コード</th>
+<th>コード(IDを暗号化したもの)</th>
 <th>現住地</th>
 <th>性別</th>
 <th>職歴・学歴</th>
@@ -120,6 +119,31 @@ echo "</tr>";
 </table>
 
 
+
+
+<br>
+<h2>ソーシャルランプのデータベースの『Log』テーブルの中身を表示しています。（最新30件)
+</h2>
+
+<ul id="log">
+<script type="text/javascript">
+$(document).ready(function(){
+
+	
+	$("#log").append('<img src="lib/load.gif">');
+	$.ajax({
+		type: "POST",
+		url: "lib/printLog.php",
+		success: function(_data){
+			console.log(_data);
+			$("#log").text("");
+			$("#log").append(_data);
+		}
+	});
+
+});
+
+</script>
 
 
 

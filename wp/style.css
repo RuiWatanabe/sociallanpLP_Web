@@ -1,0 +1,121 @@
+body {
+	padding-top: 60px;
+	padding-bottom: 40px;
+	background-image: url("images/back4.jpg");
+}
+
+h1{
+	text-shadow: 0px 0px 1px black;
+}
+
+.hero-unit,.well{
+	//background-image: url("images/wall2.jpg");
+	//background-color: transparent;
+	background-color:rgba(245,245,245,0.8);
+}
+
+.well .well{
+	background-color: white;
+}
+
+.row-fluid .span4.well img{
+	display: block;
+	margin:10px auto;
+}
+
+.row-fluid .span4.well{
+	height:380px;
+}
+
+.row-fluid .span4.well p{
+	line-height: 1.7em;
+}
+
+.hash{
+	display: none;
+}
+
+.alert h4{
+	padding-bottom: 5px;
+}
+
+
+#contactForm .controls{
+	margin-left:150px;
+}
+#contactForm .control-label{
+	width:135px;
+}
+
+.modal-body{
+	max-height: 90%;
+}
+
+.controls .error{
+	color:#cb5346;
+}
+
+.controls label.error{
+	font-size:80%;
+}
+
+
+#logNotification{
+right:1em;
+	z-index: 1050;
+	height:40px;
+	color: #bbb;
+	text-align: right;
+	font-size:12px;
+	line-height:40px;
+	letter-spacing: .2em;
+}
+
+#facePile{
+	margin-top:10px;
+	height:30px;
+	overflow: hidden;
+}
+
+#facePile li{
+	list-style-type: none;
+	float: left;
+	height:30px;
+	margin: 0 3px;
+	width: 30px;
+	border: 1px #999 solid;
+}
+
+#listTitle{
+	margin-top:1em;
+	margin-bottom: -1em;
+	text-align: right;
+	font-size:12px;
+	color:#666;
+}
+
+.hero-unit h2{
+	margin-top:-5px;
+}
+
+#userList{
+	margin-top:20px;
+}
+
+
+#downloadButton a{
+	padding-top:12px;
+	padding-bottom:12px;
+	font-size:161%;
+}
+
+#topIcon{
+	margin-right:15px;
+	margin-top:-15px;
+	opacity: .7;
+	
+	border-radius: 8px;
+	box-shadow: 1px 1px 1px black inset;
+	-webkit-box-shadow: 1px 1px 5px -2px black;
+	
+}

@@ -60,24 +60,16 @@ else{
 
 
 	$body= 
-	"$name 様
-	
-	ソーシャルランプへのユーザー登録、ありがとうございます。
-	
-	あなたの認証用メールアドレス
-	$fbmail
-	※システムを利用する際に必要になります。
-	
-	こちらのURLからダウンロードすることができます。
-	http://sociallanp.lastlanp.jp/download.php?type=web&code=".$code."
-	※上記のダウンロードURLは24時間で失効となりますので、
-	お早めのダウンロードをお願いいたします。";
+	"$name様
+	$addTime に $entrance_name の続きを開いてくれましたね。
+	ありがとうございます。
+	";
 	
 	
 	mb_language("Ja") ;
 	mb_internal_encoding("UTF-8");
 	$mailto=$screen_name."@facebook.com";
-	$subject="WpSocialLanp: ダウンロードURLの送付";
+	$subject="ありがとうございました。";
 	$mailfrom="From:" .mb_encode_mimeheader("ラストランプ運営チーム") ."< $fbmail >";
 	$re = mb_send_mail($mailto,$subject,$body,$mailfrom);
 	
@@ -85,6 +77,12 @@ else{
 	
 
 }
+
+
+
+require_once("log.php");
+addLog($screen_id,$addTime,"Post",$entrance_name);
+
 
 //print_r($_SESSION);
 ?>

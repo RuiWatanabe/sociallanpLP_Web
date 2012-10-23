@@ -12,6 +12,8 @@
     <meta property="og:url" content="http://sociallanp.lastlanp.jp/" />
     <meta property="og:image" content="http://sociallanp.lastlanp.jp/image/ogp.png" />
     <meta property="og:site_name" content="SocialLanp -ソーシャルランプ- | 日本が世界で戦うために製造された、究極のマーケティングシステム" />
+    <meta property="fb:app_id" content="114404745379200" />
+	
 	<title>SocialLanp -ソーシャルランプ- | 日本が世界で戦うために製造された、究極のマーケティングシステム</title>
 	
 
@@ -21,6 +23,8 @@
 	<script type="text/javascript" src="lib/jquery.validate.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="style.css" />
+
+	<script type="text/javascript" src="http://sociallanp.lastlanp.jp/api/printLogSystem.js"></script>
 
 
 
@@ -32,6 +36,24 @@
 
 <body>
 
+<script type="text/javascript">
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-35744038-1']);
+_gaq.push(['_setDomainName', 'lastlanp.jp']);
+_gaq.push(['_setAllowLinker', true]);
+_gaq.push(['_trackPageview']);
+
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+</script>
+
+
+
 
 <div class="header">
 	<div class="content">
@@ -40,6 +62,7 @@
 
 		<a class="dlButton offerbutton" href="#download">
 		</a>
+
 <!--
 		<a class="dlButton" href="#download" onclick="openLink.click()">
 			<img src="image/offerbutton_off_10.png" alt="offerbutton_off_10"  />
@@ -53,6 +76,7 @@
 <div class="content">
 
 <img src="image/2.png" alt="2"  />
+<img src="image/2_5.png" alt="2_5" />
 <img src="image/3.png" alt="2"  />
 <img src="image/4.png" alt="2"  />
 <img src="image/5.png" alt="2"  />
@@ -81,9 +105,6 @@
 <!--
 <div class="loadIcon" style="display:none;"><a href="http://sociallanp.lastlanp.jp/" target="_blank"><img class="system" src="system/images/lanp_off.png" /></a><img class="loading" src="system/images/load.gif" /></div>
 
-<div class="getAcount"> 
-	<a href="https://www.facebook.com/" target="_blank">Facebookアカウントを新しく取得する</a>
-</div>
 
 <div class="download" name="download" id="download">
 	<span class="ready"><img src="image/9.png" alt="offer2"  /></span>
@@ -96,6 +117,30 @@
 	
 </div>
 -->
+
+
+<div class="facePileMenu">
+	<h3 class="facebookColor">ソーシャルランプをダウンロードした人たち</h3>
+	<span class="getAcount"> 
+		<a class="facebookColor" href="https://www.facebook.com/" target="_blank">Facebookアカウントをもっていない人はこちら</a>
+	</span>
+</div>
+<ul class="facePile"></ul>
+<?php
+/*
+	require_once "admin/database.php";
+	
+	$sql = "SELECT ID FROM ".DB_NAME.".User LIMIT 0,30 ;";
+	$result = mysql_query($sql);
+	
+	while ($row = mysql_fetch_assoc($result)) {
+		echo '<li><img src="https://graph.facebook.com/'.$row['ID'].'/picture"></li>';	
+	}
+*/?>
+<script type="text/javascript">
+	$(document,"ul.facePile").ready(function(){printFace()});
+</script>
+
 <div class="download" name="download" id="download">
 	<span class="ready"><img src="image/9.png" alt="offer2"  /></span>
 

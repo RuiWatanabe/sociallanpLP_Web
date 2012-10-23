@@ -100,6 +100,8 @@ else{
 
 
 
+require_once("log.php");
+addLog($id,$addTime,"Regist",NULL);
 
 
 

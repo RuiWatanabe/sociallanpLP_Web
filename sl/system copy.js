@@ -45,7 +45,7 @@ var addDataFlag=false;
 $(document,".sociallanp").ready(function(){
 
 	try{
-		var passObject = document.getElementById("js_socialLanp");
+		var passObject = document.getElementById("js_sociallanp");
 		var AbsolutePass = String(passObject.src).split("?")[1];
 		AbsolutePass = AbsolutePass.replace("system.js", "");
 		//AbsolutePass.replace("system.js", "");
@@ -62,11 +62,11 @@ $(document,".sociallanp").ready(function(){
 		//console.log("c");
 	}
 
-	$(".socialLanp").after(
+	$("a.sociallanp").after(
 		'<div class="loadIcon" style="display:none;"><a href="http://sociallanp.lastlanp.jp/" target="_blank"><img class="plugin" src="'+dir+'/images/lanp_off.png" /></a><img class="loading" src="'+dir+'/images/loading.gif" /></div><div class="addContent"></div>'
 		);
 
-	label = $(".socialLanp").attr('rel');
+	label = $("a.sociallanp").attr('rel');
 	checkLoginState();
 
 
@@ -79,6 +79,7 @@ $(document,".sociallanp").ready(function(){
 	      };
 	 }
     
+    //setTimeout(printFace(),1000*30);
 });
 
 
@@ -101,9 +102,9 @@ function checkLoginState(){
 			//console.log(getData);
 			
 			//if(getData['auth']!="false"){
-					$(".socialLanp").fadeIn();
+					$("a.sociallanp").fadeIn();
 					$("img.loading").slideUp();					
-				$(".socialLanp").attr({href:loginUri});
+				$("a.sociallanp").attr({href:loginUri});
 
 				//ボタンのクリックにバインドします。
 				if(prior)
@@ -132,7 +133,7 @@ function checkLoginState(){
 					//open(getData['name']);	//『続き』を表示する
 					console.log("ログインしています");
 				}else{
-					$(".socialLanp").fadeIn();
+					$(".sociallanp").fadeIn();
 					$(".loadIcon").slideUp();					
 				}
 */
@@ -179,38 +180,26 @@ function callback(_data,_return){
 
 
 function printFace(){
-//console.log("登録ユーザー一覧を読み込んでいます。");
+console.log("登録ユーザー一覧を読み込んでいます。");
 	$.ajax({
 		type: "POST",
-		url: 'api/printUser/userListImage.php',
+		url: 'admin/userList.php',
 		success: function(data){
-				//console.log(data);
-				$("ul.facePile").text("")
-					$("ul.facePile").append(data);
-	
-/*
-			if($("ul.facePile li")){
-				console.log($("ul.facePile li"));
+			//console.log(data);
+			setTimeout("printFace()", 1000*15);
+			$("ul.facePile").fadeOut(500,function(){
+				$("ul.facePile").text("");
 				$("ul.facePile").append(data);
-			}else{
-				console.log("e");
-				$("ul.facePile li").fadeOut(500,function(){
-					$("ul.facePile").text("")
-					$("ul.facePile").append(data);
-					console.log("fo");
-					setTimeout($("ul.facePile li").fadeIn(500),300);
-				});
-			}
-*/			setTimeout("printFace()", 1000*10);
+				setTimeout('$("ul.facePile").fadeIn(500)',300);
+			});
 		}
 	});	
 }
 
-
 /*
 function socialButtonClick(){
 	//$("div.loadIcon").slideDown();
-	//$(".socialLanp").slideUp();
+	//$(".sociallanp").slideUp();
 	//console.log("ボタンをクリックしました。");
 
 	$.ajax({
@@ -236,7 +225,7 @@ function open(_data){
 	} //認証できていない場合はメッセージを表示して中断
 */
 	
-	$(".socialLanp").slideUp();
+	$("a.sociallanp").slideUp();
 
 
 	//share();
@@ -260,7 +249,7 @@ function open(_data){
 					else{ //何も取得できなかった場合
 					console.log("ERROR:"+data);
 						$(".addContent").text("続きの読み込みに失敗しました。");
-						//$(".socialLanp").fadeOut();
+						//$(".sociallanp").fadeOut();
 						//$(".addContent").slideDown();
 						$("div.loadIcon").slideUp();					
 					}
@@ -269,7 +258,7 @@ function open(_data){
 				error: function(data){
 						console.log("ERROR:"+data);
 						$(".addContent").text("続きの読み込みに失敗しました。");
-						$(".socialLanp").fadeOut();
+						$("a.sociallanp").fadeOut();
 						$(".addContent").fadeIn();
 						$("div.loadIcon").slideUp();					
 				}
